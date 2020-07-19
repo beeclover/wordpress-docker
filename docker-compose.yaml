@@ -1,0 +1,38 @@
+version: "3.1"
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 32772:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wp
+    volumes:
+      - ./.wordpress:/var/www/html
+    networks:
+      - backend
+
+  db:
+    image: mariadb
+    restart: always
+    ports:
+      - 3306
+    environment:
+      MYSQL_DATABASE: wp
+      MYSQL_USER: wp
+      MYSQL_PASSWORD: wp
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - maria:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+volumes:
+  maria:
