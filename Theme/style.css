@@ -1,0 +1,10 @@
+/*
+Theme Name:     ChildTheme
+Author:         Hansanghyeon
+Author URI:     https://4log.hapas.io
+Description:    Wordpress Child theme template
+Template:       twentytwelve
+Version:        0.0.1
+*/
+
+@import url("../twentytwelve/style.css");
