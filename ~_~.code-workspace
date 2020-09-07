@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "Theme"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      ".wordpress": true,
+      "Theme": true
+    },
+    "editor.formatOnSave": true,
+    "explorer.sortOrder": "type",
+    "workbench.colorCustomizations": {
+      "statusBar.background": "#8574B8",
+      "statusBarItem.hoverBackground": "#363B3B",
+      "statusBar.foreground": "#15202b"
+    }
+  }
+}
