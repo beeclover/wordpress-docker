@@ -1,19 +1,8 @@
 {
-  "files.exclude": {
-    ".wordpress": true
-  },
-  "explorer.sortOrder": "type",
-  "editor.formatOnSave": true,
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#8574B8",
-    "statusBarItem.hoverBackground": "#363B3B",
-    "statusBar.foreground": "#15202b"
-  },
   "liveSassCompile.settings.formats": [
     {
-      "format": "compressed",
-      "extensionName": ".min.css",
-      "savePath": "./Theme/src",
+      "extensionName": ".css",
+      "savePath": "./src", // 원하는 경로 지정
     }
   ],
   "liveSassCompile.settings.autoprefix": [

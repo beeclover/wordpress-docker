@@ -13,7 +13,7 @@ services:
       WORDPRESS_DB_NAME: wp
     volumes:
       - ./.wordpress:/var/www/html
-      - ./Theme:/var/www/html/wp-content/themes/hapas
+      - ./src:/var/www/html/wp-content/themes/hapas
       - ./backup:/var/www/html/wp-content/ai1wm-backups
     networks:
       - backend
