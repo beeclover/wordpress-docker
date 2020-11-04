@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   wordpress:
-    image: wordpress
+    image: wordpress:php7.4
     restart: always
     ports:
       - 32772:80
@@ -14,6 +14,7 @@ services:
     volumes:
       - ./.wordpress:/var/www/html
       - ./Theme:/var/www/html/wp-content/themes/hapas
+      - ./backup:/var/www/html/wp-content/ai1wm-backups
     networks:
       - backend
 
