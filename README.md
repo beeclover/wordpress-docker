@@ -1,5 +1,5 @@
 <p align="center">
-<img src="Theme/screenshot.png" width="250px" style="border-radius: 8px">
+<img src="./preview.png" width="250px" style="border-radius: 8px">
 </p>
 
 
