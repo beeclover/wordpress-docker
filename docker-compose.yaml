@@ -1,40 +1,28 @@
-version: "3.7"
+version: '3.7'
 
 services:
   wordpress:
+    env_file:
+      - ./.env
+    container_name: WP__${PROJECT_NAME}
     image: wordpress:php7.4
     restart: always
     ports:
-      - 32772:80
+      - ${PROJECT_PORT}:80
     environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: wp
-      WORDPRESS_DB_PASSWORD: wp
-      WORDPRESS_DB_NAME: wp
+      WORDPRESS_DB_HOST: workdb:3306
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
     volumes:
       - ./.wordpress:/var/www/html
-      - ./src:/var/www/html/wp-content/themes/hapas
+      - ./zeplin:/var/www/html/wp-content/uploads/zeplin
+      - ./Theme:/var/www/html/wp-content/themes/base
       - ./backup:/var/www/html/wp-content/ai1wm-backups
-    networks:
-      - backend
-
-  db:
-    image: mariadb
-    restart: always
-    ports:
-      - 3306
-    environment:
-      MYSQL_DATABASE: wp
-      MYSQL_USER: wp
-      MYSQL_PASSWORD: wp
-      MYSQL_RANDOM_ROOT_PASSWORD: "1"
-    volumes:
-      - maria:/var/lib/mysql
-    networks:
-      - backend
-
+    external_links:
+      - DB__wordpress:mariadb
+  
 networks:
-  backend:
-    driver: bridge
-volumes:
-  maria:
+  default:
+    external:
+      name: db_work

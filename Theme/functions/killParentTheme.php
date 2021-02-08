@@ -3,15 +3,14 @@
 /**
  * Kill Themes
  *
- * @package      hapas
  * @author       Hansanghyeon
- * @copyright    Hansanghyeon <dandan9509@gmail.com>
- * @description  twentysixteen hidden
+ * @copyright    Hansanghyeon <999@hyeon.pro>
+ * @description  twentynineteen hidden
  **/
 
 function kill_theme_wpse_188906($themes)
 {
-  unset($themes['twentysixteen']);
+  unset($themes['twentynineteen']);
   return $themes;
 }
 add_filter('wp_prepare_themes_for_js', 'kill_theme_wpse_188906');

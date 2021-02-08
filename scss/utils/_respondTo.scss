@@ -13,14 +13,14 @@ $breakpoints: (
     min-width: 1200px,
   ),
   "hg": (
-    min-width: 1240px,
+    min-width: 1439px,
   ),
 );
 /// Responsive breakpoint manager
 /// @access public
 /// @param {String} $breakpoint - Breakpoint
 /// @requires $breakpoints
-@mixin respond-to($breakpoint) {
+@mixin respondTo($breakpoint) {
   $raw-query: map-get($breakpoints, $breakpoint);
 
   @if $raw-query {
