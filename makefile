@@ -1,0 +1,2 @@
+setup:
+	make .wp
