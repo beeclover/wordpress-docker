@@ -1,2 +1,2 @@
 setup:
-	make .wp
+	mkdir mysql
