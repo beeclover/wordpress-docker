@@ -33,8 +33,6 @@ composer create-project roots/sage src dev-master
 
 ## 3. `docker-compose up -d`
 
-`wp-content`에 `/var/www/html/wp-content`의 파일시스템에 마운트하여 관리할 필요가 있는 것을 맵핑하였습니다.
-
 `.env` **참고**
 
 ```

@@ -1,5 +1,4 @@
-# .wordpress
-# backup
 .env
-Theme/index.css
 mysql
+wp-content/**/*
+!wp-content/mu-plugins/subdir-loader.php
