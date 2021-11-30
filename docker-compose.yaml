@@ -5,7 +5,7 @@ services:
     env_file:
       - ./.env
     container_name: WP__${PROJECT_NAME}
-    image: ghcr.io/hansanghyeon/wordpress-redis:php8.0-apache-redis
+    image: ghcr.io/hansanghyeon/wordpress-redis:latest
     restart: always
     environment:
       WORDPRESS_DB_HOST: db

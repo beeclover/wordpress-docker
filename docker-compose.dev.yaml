@@ -4,7 +4,7 @@ services:
   wordpress:
     env_file:
       - ./.env
-    image: ghcr.io/hansanghyeon/wordpress-redis:php8.0-apache-redis
+    image: ghcr.io/hansanghyeon/wordpress-redis:latest
     environment:
       WORDPRESS_DB_HOST: DB_workdb:3306
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
