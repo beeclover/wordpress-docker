@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  wordpress:
+    env_file:
+      - ./.env
+    container_name: WP__${PROJECT_NAME}
+    image: ghcr.io/hansanghyeon/wordpress-redis:latest
+    restart: always
+    ports:
+      - 30000:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: 1
+      WORDPRESS_DB_NAME: wp
+    volumes:
+      - wordpress:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+      - ./src:/var/www/html/wp-content/themes/sage
+    labels:
+      - traefik.enable=true
+      ## HTTP Routers
+      - traefik.http.routers.svc__wordpress.rule=Host(`article.talentbank.co.kr`)
+      - traefik.http.routers.svc__wordpress.entrypoints=web
+      - traefik.http.routers.svc__wordpress.entrypoints=websecure
+      - traefik.http.routers.svc__wordpress.tls.certresolver=leresolver
+      ## Service
+      - traefik.http.services.svc__wordpress.loadbalancer.server.port=80
+
+  db:
+    image: mariadb
+    container_name: DB__work
+    restart: always
+    ports:
+      - 3306
+    environment:
+      MYSQL_DATABASE: wp
+      MARIADB_ROOT_PASSWORD: 1
+
+volumes:
+  wordpress:
+  redis:
