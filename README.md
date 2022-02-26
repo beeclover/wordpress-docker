@@ -27,17 +27,18 @@ HOSTNAME=
 아래 명령어를 터미널을 통해서 실행
 
 ```
-docker-compose up -d
+docker-compose -f docker-compose.local.yaml up -d
 ```
 
 
 ### use roots/sage theme (option)
 
 ```sh
-docker run --rm --interactive --tty \
---volume $PWD:/app \
---volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
-composer create-project roots/sage src dev-master
+docker run --rm \
+    -v $(pwd):/opt \
+    -w /opt \
+    laravelsail/php80-composer:latest \
+    composer create-project roots/sage src dev-main
 ```
 
 
