@@ -41,6 +41,17 @@ docker run --rm \
     composer create-project roots/sage src dev-main
 ```
 
+```sh
+yarn install
+```
+
+```sh
+docker run --rm --interactive --tty \
+    --volume $PWD:/app \
+    --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
+    composer install
+```
+
 
 ## Author
 
