@@ -9,29 +9,7 @@
 
 > Wordpress Working template
 
-## install
-
-### 워드프레스 RUN
-
-`.env.example`을 복사해서 `.env` 파일로 만들고 아래 내용을 채워준다.
-
-```
-WORDPRESS_DB_USER=
-WORDPRESS_DB_PASSWORD=
-WORDPRESS_DB_NAME=
-PROJECT_NAME=
-
-HOSTNAME=
-```
-
-아래 명령어를 터미널을 통해서 실행
-
-```
-docker-compose -f docker-compose.local.yaml up -d
-```
-
-
-### use roots/sage theme (option)
+## 테마 설치 roots/sage theme (옵션)
 
 ```sh
 docker run --rm \
@@ -40,6 +18,8 @@ docker run --rm \
     laravelsail/php80-composer:latest \
     composer create-project roots/sage src dev-main
 ```
+
+## 테마파일의 패키지 설치
 
 ```sh
 yarn install
@@ -52,6 +32,25 @@ docker run --rm --interactive --tty \
     composer install
 ```
 
+### 테마파일 패키지 실행
+
+```sh
+yarn start
+```
+
+## 명령어
+
+### 도커 실행명령어
+
+```sh
+docker-compose -f docker-compose.local.yaml up -d
+```
+
+### 도커 종료명령어
+
+```sh
+docker-compose -f docker-compose.local.yaml down
+```
 
 ## Author
 
