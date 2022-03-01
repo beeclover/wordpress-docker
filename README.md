@@ -9,7 +9,7 @@
 
 > Wordpress Working template
 
-## 테마 설치 roots/sage theme (옵션)
+## 테마 설치 roots/sage theme (옵션 하지만 권장)
 
 ```sh
 docker run --rm \
@@ -19,7 +19,14 @@ docker run --rm \
     composer create-project roots/sage src dev-main
 ```
 
-## 테마파일의 패키지 설치
+```sh
+docker run --rm --interactive --tty \
+    --volume $PWD:/app \
+    --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
+    composer require roots/acorn
+```
+
+### 테마파일의 패키지 설치
 
 ```sh
 yarn install
@@ -37,6 +44,10 @@ docker run --rm --interactive --tty \
 ```sh
 yarn start
 ```
+
+#### 설치하고 페이지 편집에서 워드프레스 크리티컬 오류?
+
+초기의 public 폴더가 없어서 생기는 오류이다.
 
 ## 명령어
 
