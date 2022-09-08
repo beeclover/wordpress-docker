@@ -4,3 +4,4 @@
 !.docker/db/.gitkeep
 .docker/traefik/acme/**/*
 !.docker/traefik/acme/.gitkeep
+docker-compose.yaml
