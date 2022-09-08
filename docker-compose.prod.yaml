@@ -5,7 +5,7 @@ services:
     env_file:
       - ./.env
     container_name: WP__${PROJECT_NAME}
-    image: ghcr.io/hansanghyeon/wordpress-redis:latest
+    image: wordpress:6.0.1-php8.1-apache
     restart: always
     environment:
       WORDPRESS_DB_HOST: db
@@ -18,8 +18,8 @@ services:
         define('WP_REDIS_PORT', getenv_docker('WORDPRESS_REDIS_PORT', 6379));
     volumes:
       - wordpress:/var/www/html
-      - ./wp-content:/var/www/html/wp-content
-      - ./src:/var/www/html/wp-content/themes/sage
+      - ./.docker/wp/wp-content:/var/www/html/wp-content
+      - ./apps/theme:/var/www/html/wp-content/themes/beeclover
     labels:
       - traefik.enable=true
       ## HTTP Routers
@@ -40,7 +40,7 @@ services:
       MYSQL_DATABASE: wp
       MARIADB_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./.docker/db/data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin
@@ -63,7 +63,7 @@ services:
       - redis:/data
 
   traefik:
-    image: traefik:v2.4
+    image: traefik:v2.8
     container_name: DO__traefik
     restart: unless-stopped
     ports:
@@ -78,9 +78,9 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./config/traefik/rules:/rules
-      - ./config/traefik/acme:/acme
-      - ./config/traefik/traefik.yaml:/etc/traefik/traefik.yaml
+      - ./.docker/traefik/rules:/rules
+      - ./.docker/traefik/acme:/acme
+      - ./.docker/traefik/traefik.yaml:/etc/traefik/traefik.yaml
     labels:
       - traefik.enable=true
       ## HTTP Routers

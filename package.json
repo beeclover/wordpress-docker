@@ -1,0 +1,9 @@
+{
+  "name": "wordpress",
+  "repository": "https://github.com/beeclover/wordpress.git",
+  "author": "Hansanghyeon <hyeon@beeclover.pro>",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ]
+}

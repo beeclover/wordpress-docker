@@ -1,4 +1,6 @@
 .env
-mysql
-wp-content/**/*
-!wp-content/mu-plugins/subdir-loader.php
+.docker/wp/wp-content/**/*
+.docker/db/**/*
+!.docker/db/.gitkeep
+.docker/traefik/acme/**/*
+!.docker/traefik/acme/.gitkeep
