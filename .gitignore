@@ -1,5 +1,5 @@
 .env
-.docker/wp/wp-content/**/*
+.docker/wp
 .docker/db/**/*
 !.docker/db/.gitkeep
 .docker/traefik/acme/**/*

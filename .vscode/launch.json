@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for XDebug on docker wordpress",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "pathMappings": {
+        "/var/www/html": "${workspaceFolder}/.docker/wp",
+        "/var/www/html/wp-content/themes/beeclover": "${workspaceFolder}/apps/theme"
+      }
+    }
+  ]
+}

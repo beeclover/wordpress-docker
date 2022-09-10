@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   wordpress:
-    image: wordpress:6.0.1-php8.1-apache
+    image: ghcr.io/hansanghyeon/wordpress-xdebug:6.0.2-php8.0-apache
     restart: always
     ports:
       - 30000:80
@@ -12,8 +12,7 @@ services:
       WORDPRESS_DB_PASSWORD: 1
       WORDPRESS_DB_NAME: wp
     volumes:
-      - wordpress:/var/www/html
-      - ./.docekr/wp/wp-content:/var/www/html/wp-content
+      - ./.docker/wp:/var/www/html
       - ./apps/theme:/var/www/html/wp-content/themes/beeclover
 
   db:
