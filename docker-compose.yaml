@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  wordpress:
+    image: wordpress:6.2-php8.0-apache
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: wp
+    volumes:
+      - ./volume/v1/wp:/var/www/html
+      - ./apps/v1/theme:/var/www/html/wp-content/themes/v1
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: wp
+      MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+    volumes:
+      - ./volume/v1/db/main/data:/var/lib/mysql
