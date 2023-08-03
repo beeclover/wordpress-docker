@@ -13,43 +13,44 @@
 
 ```
 .
-├── .docker
-│   ├── db
-│   │   ├── data              // mariadb의 데이터 폴더
-│   │   └── .gitkeep
-│   ├── traefik
-│   │   ├── acme              // traefik 인증서
-│   │   │   └── .gitkeep
-│   │   ├── rules             // traefik dynamic config 폴더
-│   │   │   └── .gitkeep
-│   │   └── traefik.yaml
-│   └── wp
-│       ├── wp-content        // 워드프레스 컨텐츠 폴더
-│       └── .gitkeep
-├── .env.example
-├── .gitignore
 ├── Makefile
 ├── README.md
 ├── apps
-│   └── theme                 // 워드프레스에서 사용할 테마 폴더
-│       └── .gitkeep
-├── docker-compose.local.yaml
-└── docker-compose.yaml
+│   └── v1  # 테마파일
+├── docker-compose.override.yaml
+├── docker-compose.prod.yaml
+├── docker-compose.yaml
+└── voulme
+    └── v1
+        ├── db  # MySQL 데이터 저장
+        └── wp  # wordpress 데이터 저장
 ```
 
 ## 명령어
 
-### local (with: docker-compose.local.yaml)
+### init
+
+```sh
+make init
+```
+
+clean
+
+```sh
+make clean
+```
+
+### local, demo (with: docker-compose.yaml)
 
 로컬 개발실행
 
 ```sh
-make dev:run
+make dev:up
 ```
 
 로컬 개발종료
 
-```
+```sh
 make dev:down
 ```
 
@@ -57,56 +58,12 @@ make dev:down
 
 프로덕션 실행
 
-```
-make prod:run
+```sh
+make prod:up
 ```
 
 프로덕션 종료
 
-```
+```sh
 make prod:down
 ```
-
-## 테마 설치 (option)
-
-**roots/sage 설치**
-
-```sh
-cd apps/theme
-rm .gitkeep
-composer create-project roots/sage .
-```
-
-roots/sage에서 acorn을 사용하지만 태마 설치시에 설치되지 않기 때문에 추가 설치
-
-```sh
-composer require roots/acorn
-```
-
-**composer가 설치되지 않았을 때**
-
-```
-docker run --rm --interactive --tty \
-    --volume $PWD:/app \
-    --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
-    composer 명령어
-```
-
-**node_modules 설치**
-
-```sh
-yarn install
-```
-
-**테마 개발 실행**
-
-```sh
-yarn start
-```
-
-## Author
-
-👤 **Hansanghyeon**
-
-* Website: [hyeon.pro](https://hyeon.pro)
-* Github: [@Hansanghyeon](https://github.com/Hansanghyeon)
