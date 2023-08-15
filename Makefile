@@ -1,8 +1,15 @@
+.DEFAULT_GOAL := init
+
+VERSION ?= v1
+
 init:
-	@read -p "Enter the version (e.g., v1, v2, v3): " VERSION; \
-	mkdir -p volume/$$VERSION/db; \
-	mkdir -p volume/$$VERSION/wp; \
-	mkdir -p app/$$VERSION
+	@read -p "Enter the version (default: $(VERSION), e.g., v1, v2, v3): " input; \
+	if [ ! -z "$$input" ]; then \
+		VERSION=$$input; \
+	fi; \
+	mkdir -p volume/$(VERSION)/db; \
+	mkdir -p volume/$(VERSION)/wp; \
+	mkdir -p app/$(VERSION)
 
 clean:
 	rm -r app volume
