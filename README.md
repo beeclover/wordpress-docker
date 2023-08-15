@@ -9,6 +9,9 @@
 
 > Wordpress Working template
 
+- 참고
+  - [wordpress - 공식 이미지 | 도커 허브](https://hub.docker.com/_/wordpress)
+
 ## folder structure
 
 ```
