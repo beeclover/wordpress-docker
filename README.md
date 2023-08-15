@@ -9,8 +9,8 @@
 
 > Wordpress Working template
 
-- 참고
-  - [wordpress - 공식 이미지 | 도커 허브](https://hub.docker.com/_/wordpress)
+- Ref [wordpress - 공식 이미지 | 도커 허브](https://hub.docker.com/_/wordpress)
+- Ref [Run PHP and Composer commands via Docker – Seagyn Davis](https://www.seagyndavis.com/run-php-and-composer-commands-via-docker)
 
 ## folder structure
 
