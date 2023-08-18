@@ -11,7 +11,7 @@ services:
       WORDPRESS_DB_NAME: wp
     volumes:
       - ./volume/v1/wp:/var/www/html
-      - ./app/v1:/var/www/html/wp-content/themes/v1
+      - ./app/theme:/var/www/html/wp-content/themes/v1
   db:
     image: mariadb
     restart: always
