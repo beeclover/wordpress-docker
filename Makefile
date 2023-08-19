@@ -9,10 +9,10 @@ init:
 	fi; \
 	mkdir -p volume/$(VERSION)/db; \
 	mkdir -p volume/$(VERSION)/wp; \
-	mkdir -p app/$(VERSION)
+	mkdir -p apps/$(VERSION)
 
 clean:
-	rm -r app volume
+	rm -r apps volume
 
 dev\:up:
 	docker-compose up -d
@@ -27,7 +27,11 @@ prod\:down:
 	docker-compose -f docker-compose.yaml -f docker-compose.override.yaml -f docker-compose.prod.yaml down
 
 p:
-	sudo chown -R 33:33 apps/theme .docker/wp/wp-content && sudo chmod -R 775 apps/theme .docker/wp/wp-content
+	@read -p "Enter the version (default: $(VERSION), e.g., v1, v2, v3): " input; \
+	if [ ! -z "$$input" ]; then \
+		VERSION=$$input; \
+	fi; \
+	sudo chown -R 33:33 apps/theme volume/$(VERSION)/wp && sudo chmod -R 775 apps/theme volume/$(VERSION)/wp
 
 php_env:
 	@read -p "Enter the version (default: $(VERSION), e.g., v1, v2, v3): " input; \
