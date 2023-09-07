@@ -1,8 +1,19 @@
 version: "3.9"
 
+volumes:
+  redis:
+
 services:
   wordpress:
+    image: wordpress:6.2-php8.1-apache
+    restart: always
+    volumes:
+      - ./volume/v1/wp:/var/www/html
     environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: wp
       WORDPRESS_DEBUG: 0
       WORDPRESS_CONFIG_EXTRA: |
         /* Redis */
@@ -20,15 +31,22 @@ services:
         # define('WPMS_MAILGUN_DOMAIN', getenv_docker('WPMS_MAILGUN_DOMAIN'));
         # define('WPMS_MAILGUN_REGION', 'US'); // Change to 'EU' for Europe.
         # define('WPMS_MAILER', 'mailgun');
-      # WPMS_MAILGUN_API_KEY: ${WPMS_MAILGUN_API_KEY}
-      # WPMS_MAILGUN_DOMAIN: ${WPMS_MAILGUN_DOMAIN}
-      # WPMS_MAIL_FROM_NAME: ${WPMS_MAIL_FROM_NAME}
-      # WPMS_MAIL_FROM: ${WPMS_MAIL_FROM}
+        # WPMS_MAILGUN_API_KEY: ${WPMS_MAILGUN_API_KEY}
+        # WPMS_MAILGUN_DOMAIN: ${WPMS_MAILGUN_DOMAIN}
+        # WPMS_MAIL_FROM_NAME: ${WPMS_MAIL_FROM_NAME}
+        # WPMS_MAIL_FROM: ${WPMS_MAIL_FROM}
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: wp
+      MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+    volumes:
+      - ./volume/v1/db/data:/var/lib/mysql
 
   redis:
     image: redis:latest
     volumes:
       - redis:/data
 
-volumes:
-  redis:
