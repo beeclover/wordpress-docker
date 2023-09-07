@@ -1,25 +1,17 @@
-.PHONY: set-env
 .DEFAULT_GOAL := init
 
 VERSION ?= v1
+PROJECT_ENV ?= development
 
-define ask_user
-	@read -p "환경을 선택하세요 (Y=개발, n=프로덕션): " choice; \
-	if [ "$$choice" = "n" ]; then \
-		export ENV=production; \
-	else \
-		export ENV=development; \
-	fi; \
-	read -p "Enter the version (default: $(VERSION), e.g., v1, v2, v3): " input; \
+init:
+	@read -p "Choose an environment (d=development, p=production): " choice; \
+        if [ "$$choice" = "p" ]; then \
+                PROJECT_ENV=production; \
+        fi; \
+	@read -p "Enter the version (default: $(VERSION), e.g., v1, v2, v3): " input; \
 	if [ ! -z "$$input" ]; then \
 		VERSION=$$input; \
-	fi
-endef
-
-set-env:
-	$(ask_user)
-
-init: set-env
+	fi; \
 	mkdir -p volume/$(VERSION)/db; \
 	mkdir -p volume/$(VERSION)/wp; \
 	mkdir -p apps/$(VERSION)
@@ -52,5 +44,3 @@ php_env:
 	echo "php_value memory_limit 256M" >> volume/$(VERSION)/wp/.htaccess; \
 	echo "php_value max_execution_time 300" >> volume/$(VERSION)/wp/.htaccess; \
 	echo "php_value max_input_time 300" >> volume/$(VERSION)/wp/.htaccess
-
-.PHONY: init
