@@ -9,11 +9,11 @@ define ask_user
 		export ENV=production; \
 	else \
 		export ENV=development; \
-	fi
-	@read -p "Enter the version (default: $(VERSION), e.g., v1, v2, v3): " input; \
+	fi; \
+	read -p "Enter the version (default: $(VERSION), e.g., v1, v2, v3): " input; \
 	if [ ! -z "$$input" ]; then \
 		VERSION=$$input; \
-	fi; \
+	fi
 endef
 
 set-env:
