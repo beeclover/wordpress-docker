@@ -12,27 +12,8 @@ services:
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       WORDPRESS_DB_NAME: wp
-      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG}
-      WORDPRESS_CONFIG_EXTRA: |
-        /* Redis */
-        define('WP_REDIS_HOST', getenv_docker('WORDPRESS_REDIS_HOST', 'redis'));
-        define('WP_REDIS_PORT', getenv_docker('WORDPRESS_REDIS_PORT', 6379));
-        define('WP_MEMORY_LIMIT', '128M');
-        # # WP MAIL SMPT
-        # define('WPMS_ON', true);
-        # define('WPMS_MAIL_FROM', getenv_docker('WPMS_MAIL_FROM'));
-        # define('WPMS_MAIL_FROM_FORCE', true);
-        # define('WPMS_MAIL_FROM_NAME', getenv_docker('WPMS_MAIL_FROM_NAME'));
-        # define('WPMS_MAIL_FROM_NAME_FORCE', true);
-        # #define( 'WPMS_SET_RETURN_PATH', true ); // Sets $phpmailer->Sender if true.
-        # define('WPMS_MAILGUN_API_KEY', getenv_docker('WPMS_MAILGUN_API_KEY'));
-        # define('WPMS_MAILGUN_DOMAIN', getenv_docker('WPMS_MAILGUN_DOMAIN'));
-        # define('WPMS_MAILGUN_REGION', 'US'); // Change to 'EU' for Europe.
-        # define('WPMS_MAILER', 'mailgun');
-        # WPMS_MAILGUN_API_KEY: ${WPMS_MAILGUN_API_KEY}
-        # WPMS_MAILGUN_DOMAIN: ${WPMS_MAILGUN_DOMAIN}
-        # WPMS_MAIL_FROM_NAME: ${WPMS_MAIL_FROM_NAME}
-        # WPMS_MAIL_FROM: ${WPMS_MAIL_FROM}
+      WORDPRESS_DEBUG: 1
+
   db:
     image: mariadb
     restart: always

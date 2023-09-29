@@ -20,7 +20,8 @@ services:
         define('WP_REDIS_HOST', getenv_docker('WORDPRESS_REDIS_HOST', 'redis'));
         define('WP_REDIS_PORT', getenv_docker('WORDPRESS_REDIS_PORT', 6379));
         define('WP_MEMORY_LIMIT', '128M');
-        # # WP MAIL SMPT
+        
+        # WP MAIL SMPT
         # define('WPMS_ON', true);
         # define('WPMS_MAIL_FROM', getenv_docker('WPMS_MAIL_FROM'));
         # define('WPMS_MAIL_FROM_FORCE', true);
