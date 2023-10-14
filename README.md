@@ -31,42 +31,22 @@
 
 ## 명령어
 
-### init
+초기설정
+- 버전
+- 프로덕션 개발모드
 
 ```sh
 make init
 ```
 
-clean
+정리하기
 
 ```sh
 make clean
 ```
 
-### local, demo (with: docker-compose.yaml)
+시작하기
 
-로컬 개발실행
-
-```sh
-make dev:up
 ```
-
-로컬 개발종료
-
-```sh
-make dev:down
-```
-
-### production (with: docker-compose.prod.yaml)
-
-프로덕션 실행
-
-```sh
-make prod:up
-```
-
-프로덕션 종료
-
-```sh
-make prod:down
+make start
 ```
