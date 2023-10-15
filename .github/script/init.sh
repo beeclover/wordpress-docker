@@ -26,6 +26,7 @@ if [ "$choice" = "p" ]; then
         mkdir -p apps/"$VERSION"
     fi
 else
+    rm docker-compose.prod.yaml
     read -p "Enter the version (default: $DEFAULT_VERSION, e.g., v1, v2, v3): " input
     # version을 입력하지 않으면 기본버전으로 설정한다.
     if [ -z "$input" ]; then
