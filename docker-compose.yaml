@@ -6,7 +6,7 @@ services:
     restart: always
     volumes:
       - ./volume/v1/wp:/var/www/html
-      - ./apps/theme:/var/www/html/wp-content/themes/v1
+      - ./apps/v1/theme:/var/www/html/wp-content/themes/v1
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: root
