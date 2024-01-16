@@ -5,7 +5,8 @@ volumes:
 
 services:
   wordpress:
-    image: wordpress:6.3-php8.1-apache
+    #image: wordpress:6.4-php8.2-apache
+    image: wordpress:6.4-php8.3-apache
     restart: always
     volumes:
       - ./volume/v1/wp:/var/www/html
