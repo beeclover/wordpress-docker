@@ -23,3 +23,16 @@ services:
       MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     volumes:
       - ./volume/v1/db/data:/var/lib/mysql
+
+  wpcli:
+    image: wordpress:cli-php8.3
+    user: 33:33
+    commadn: tail -f /dev/null
+    volumes:
+      - ./volume/v1/wp:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: wp
+      
