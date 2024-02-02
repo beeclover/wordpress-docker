@@ -27,7 +27,7 @@ services:
   wpcli:
     image: wordpress:cli-php8.3
     user: 33:33
-    commadn: tail -f /dev/null
+    command: tail -f /dev/null
     volumes:
       - ./volume/v1/wp:/var/www/html
     environment:
