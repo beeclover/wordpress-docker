@@ -4,7 +4,6 @@
 </a>
 </p>
 
-
 <h2 align="center">Welcome to wordpress (docker) 👋</h2>
 
 > Wordpress Working template
@@ -19,10 +18,9 @@
 ├── Makefile
 ├── README.md
 ├── apps
-│   └── v1  # 테마파일
+│   └── {{project_name}}  # 테마파일
 ├── docker-compose.override.yaml
-├── docker-compose.prod.yaml
-├── docker-compose.yaml
+├── docker-compose.yaml (docker-compose.prod.yaml)
 └── voulme
     └── v1
         ├── db  # MySQL 데이터 저장
@@ -32,8 +30,9 @@
 ## 명령어
 
 초기설정
-- 버전
-- 프로덕션 개발모드
+
+1. 프로젝트 이름
+2. 프로덕션 개발모드
 
 ```sh
 make init
@@ -43,10 +42,4 @@ make init
 
 ```sh
 make clean
-```
-
-시작하기
-
-```
-make start
 ```
