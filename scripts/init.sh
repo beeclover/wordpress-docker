@@ -53,8 +53,8 @@ fi
 echo "3. 환경변수 설정"
 
 # WORDPRESS_PASSWORD 생성 및 설정
-WORDPRESS_PASSWORD=$(openssl rand -base64 48)
-echo "WORDPRESS_PASSWORD=${WORDPRESS_PASSWORD}" >> .env
+WORDPRESS_DB_PASSWORD=$(openssl rand -base64 48)
+echo "WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}" >> .env
 
 # 프로젝트 이름 설정
 echo "PROJECT_NAME=${input}" >> .env
