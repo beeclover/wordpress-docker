@@ -41,3 +41,20 @@ else
     echo "잘못된 선택입니다. 'd' 또는 'p'를 입력해주세요."
     exit 1
 fi
+
+echo "환경변수 설정"
+
+# WORDPRESS_PASSWORD 생성 및 설정
+WORDPRESS_PASSWORD=$(openssl rand -base64 48)
+echo "WORDPRESS_PASSWORD=${WORDPRESS_PASSWORD}\n" >> .env
+
+# 프로젝트 이름 설정
+PROJECT_NAME=$input
+echo "PROJECT_NAME=${PROJECT_NAME}\n" >> .env
+
+# .env 파일에 SERVICE 항목 추가
+echo "SERVICE=$\{PROJECT_NAME\}\n" >> .env
+
+# 도메인 입력 받기
+read -p "Enter your domain: " DOMAIN
+echo "DOMAIN=${DOMAIN}" >> .env
