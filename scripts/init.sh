@@ -33,16 +33,9 @@ if [ "$choice" = "p" ]; then
     echo "2. 프로덕션 환경설정 완료"
 elif [ "$choice" = "d" ]; then
     # 개발 환경 설정
-    mkdir -p apps/"$input"
+    mkdir -p "$input"
     if [ -f docker-compose.prod.yaml ]; then
         rm docker-compose.prod.yaml
-    fi
-    if [ -f docker-compose.yaml ]; then
-        # docker-compose.yaml 파일 내의 {{project_name}}을 사용자 입력값으로 변경
-        sed -i "s/{{project_name}}/$input/g" docker-compose.yaml
-    else
-        echo "docker-compose.yaml 파일이 없습니다."
-        exit 1
     fi
     echo "2. 개발 환경설정 완료"
 else
