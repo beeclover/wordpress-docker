@@ -2,10 +2,8 @@
 
 DEFAULT_PROJECT_NAME="wordpress"
 
-echo "Choose an environment (d=development, p=production): "
-read choice
-echo "Enter project name (default: $DEFAULT_PROJECT_NAME): "
-read input
+read -p "Choose an environment (d=development, p=production): " choice
+read -p "Enter project name (default: $DEFAULT_PROJECT_NAME): " input
 
 # 프로젝트 이름이 입력되지 않은 경우 기본값 사용
 if [ -z "$input" ]; then
@@ -13,8 +11,8 @@ if [ -z "$input" ]; then
 fi
 
 # 폴더생성
-mkdir -p volume/"$input"/db
-mkdir -p volume/"$input"/wp
+mkdir -p volume/db
+mkdir -p volume/wp
 
 # 환경 설정에 따른 조건 분기
 if [ "$choice" = "p" ]; then

@@ -9,7 +9,7 @@ services:
     image: wordpress:6.4-php8.3-apache
     restart: always
     volumes:
-      - ./volume/v1/wp:/var/www/html
+      - ./volume/wp:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: root
@@ -29,7 +29,7 @@ services:
       MYSQL_DATABASE: wp
       MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     volumes:
-      - ./volume/v1/db/data:/var/lib/mysql
+      - ./volume/db/data:/var/lib/mysql
 
   redis:
     image: redis:latest
