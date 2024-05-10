@@ -22,9 +22,8 @@
 ├── docker-compose.override.yaml
 ├── docker-compose.yaml (docker-compose.prod.yaml)
 └── voulme
-    └── v1
-        ├── db  # MySQL 데이터 저장
-        └── wp  # wordpress 데이터 저장
+    ├── db # MySQL 데이터 저장
+    └── wp  # wordpress 데이터 저장
 ```
 
 ## 명령어
