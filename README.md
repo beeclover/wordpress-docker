@@ -17,8 +17,7 @@
 .
 ├── Makefile
 ├── README.md
-├── apps
-│   └── {{project_name}}  # 테마파일
+├── {{PROJECT_NAME}} #여기가 따로 버전관리될 프로젝트
 ├── docker-compose.override.yaml
 ├── docker-compose.yaml (docker-compose.prod.yaml)
 └── voulme
