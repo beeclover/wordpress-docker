@@ -24,18 +24,18 @@ echo "1. 볼륨 폴더 생성"
 # 환경 설정에 따른 조건 분기
 if [ "$choice" = "p" ]; then
     # 프로덕션 환경 설정
-    if [ -f docker-compose.prod.yaml ]; then
-        mv docker-compose.prod.yaml docker-compose.yaml
+    if [ -f docker-compose.prod.yml]; then
+        mv docker-compose.prod.yml docker-compose.yml
     else
-        echo "docker-compose.prod.yaml 파일이 없습니다."
+        echo "docker-compose.prod.yml 파일이 없습니다."
         exit 1
     fi
     echo "2. 프로덕션 환경설정 완료"
 elif [ "$choice" = "d" ]; then
     # 개발 환경 설정
     mkdir -p "$input"
-    if [ -f docker-compose.prod.yaml ]; then
-        rm docker-compose.prod.yaml
+    if [ -f docker-compose.prod.yml ]; then
+        rm docker-compose.prod.yml
     fi
     echo "2. 개발 환경설정 완료"
 else
