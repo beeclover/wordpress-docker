@@ -1,0 +1,19 @@
+set quiet
+set positional-arguments
+
+[no-exit-message]
+_run *args:
+  {{MANAGER}} {{args}}
+
+[no-exit-message]
+_cmd +args='':
+  #!/usr/bin/env zsh
+  USER_COMMAND="$(just --summary -q)"
+
+  if [[ $USER_COMMAND == *$1* ]]; then
+    just "$1"
+  elif [[ "ls" == "$1" ]]; then
+    just --list --list-prefix '' --list-heading '' --unsorted
+  else
+    just _run {{args}}
+  fi

@@ -1,6 +1,7 @@
-# 사용자 정의 도움말
-help:
-    @just --list
+# --- BEGIN   Hansanghyeon/dotfile ---
+import? '.justfile_'
+MANAGER := "pnpm"
+# --- END     Hansanghyeon/dotfile ---
 
 # 초기화 작업을 수행합니다.
 init:
