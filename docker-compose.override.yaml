@@ -9,11 +9,7 @@ services:
       - default
     labels:
       - traefik.enable=true
+      - traefik.http.routers.${SERVICE}.entrypoints=webs
       - traefik.http.routers.${SERVICE}.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.${SERVICE}.tls.certresolver=leresolver
       - traefik.http.services.${SERVICE}.loadbalancer.server.port=80
-      - traefik.http.routers.${SERVICE}.entrypoints=web
-      # http to https redirect
-      #- traefik.http.routers.${SERVICE}.entrypoints=webs
-      #- traefik.http.routers.${SERVICE}.tls.certresolver=leresolver
-      #- traefik.http.middlewares.${SERVICE}.redirectscheme.scheme=https
-      #- traefik.http.middlewares.${SERVICE}.redirectscheme.permanent=true
