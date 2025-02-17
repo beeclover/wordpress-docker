@@ -4,8 +4,8 @@ services:
     image: wordpress:6.4-php8.3-apache
     restart: always
     volumes:
-      - ./volume/wp:/var/www/html
-      - ./${PROJECT_NAME}/theme:/var/www/html/wp-content/themes/${PROJECT_NAME}
+      - ./_v/wp:/var/www/html
+      - ./apps/${PROJECT_NAME}/theme:/var/www/html/wp-content/themes/${PROJECT_NAME}
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: root
@@ -20,7 +20,7 @@ services:
       MYSQL_DATABASE: wp
       MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     volumes:
-      - ./volume/db/data:/var/lib/mysql
+      - ./_v/db/data:/var/lib/mysql
 
   wpcli:
     image: wordpress:cli-php8.3
