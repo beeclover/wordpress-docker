@@ -27,7 +27,7 @@ services:
     user: 33:33
     command: tail -f /dev/null
     volumes:
-      - ./volume/wp:/var/www/html
+      - ./_v/wp:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: root
