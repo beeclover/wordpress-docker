@@ -11,5 +11,4 @@ services:
       - traefik.enable=true
       - traefik.http.routers.${SERVICE}.entrypoints=webs
       - traefik.http.routers.${SERVICE}.rule=Host(`${DOMAIN}`)
-      - traefik.http.routers.${SERVICE}.tls.certresolver=leresolver
-      - traefik.http.services.${SERVICE}.loadbalancer.server.port=80
+      - traefik.http.services.${SERVICE}.loadbalancer.server.port=${APP_PORT}
