@@ -51,6 +51,10 @@ echo "PROJECT_NAME=${input}" >> .env
 # .env 파일에 SERVICE 항목 추가
 echo "SERVICE=\${PROJECT_NAME}" >> .env
 
+# wordpress docker compose service 이름명시
+echo "# etc" >> .env
+echo "COMPOSE_PROJECT_NAME=${SERVICE}-wp" >> .env
+
 # 도메인 입력 받기
 echo "# traefik" >> .env
 echo "DOMAIN=${input}.demo.beeclover.pro" >> .env
