@@ -1,7 +1,7 @@
 services:
   wordpress:
     #image: wordpress:6.4-php8.2-apache
-    image: wordpress:6.4-php8.3-apache
+    image: wordpress:php8.4-apache
     restart: always
     volumes:
       - ./_v/wp:/var/www/html
@@ -11,7 +11,27 @@ services:
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       WORDPRESS_DB_NAME: wp
-      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG: 0
+      WORDPRESS_CONFIG_EXTRA: |
+        /* Redis */
+        define('WP_REDIS_HOST', getenv_docker('WORDPRESS_REDIS_HOST', 'redis'));
+        define('WP_REDIS_PORT', getenv_docker('WORDPRESS_REDIS_PORT', 6379));
+        # define('WP_MEMORY_LIMIT', '128M');
+        # # WP MAIL SMPT
+        # define('WPMS_ON', true);
+        # define('WPMS_MAIL_FROM', getenv_docker('WPMS_MAIL_FROM'));
+        # define('WPMS_MAIL_FROM_FORCE', true);
+        # define('WPMS_MAIL_FROM_NAME', getenv_docker('WPMS_MAIL_FROM_NAME'));
+        # define('WPMS_MAIL_FROM_NAME_FORCE', true);
+        # #define( 'WPMS_SET_RETURN_PATH', true );
+        # define('WPMS_MAILGUN_API_KEY', getenv_docker('WPMS_MAILGUN_API_KEY'));
+        # define('WPMS_MAILGUN_DOMAIN', getenv_docker('WPMS_MAILGUN_DOMAIN'));
+        # define('WPMS_MAILGUN_REGION', 'US');
+        # define('WPMS_MAILER', 'mailgun');
+        # WPMS_MAILGUN_API_KEY: ${WPMS_MAILGUN_API_KEY}
+        # WPMS_MAILGUN_DOMAIN: ${WPMS_MAILGUN_DOMAIN}
+        # WPMS_MAIL_FROM_NAME: ${WPMS_MAIL_FROM_NAME}
+        # WPMS_MAIL_FROM: ${WPMS_MAIL_FROM}
 
   db:
     image: mariadb
@@ -22,8 +42,22 @@ services:
     volumes:
       - ./_v/db/data:/var/lib/mysql
 
+  # # wpcli 사용방법
+  # ## 워드프레스 코어 업데이트
+  # docker compose run --rm wpcli wp core update
+  # ## 플러그인 설치
+  # docker compose run --rm wpcli wp plugin install redis-cache --activate
+  # ## 플러그인 목록
+  # docker compose run --rm wpcli wp plugin list
+  # ## Redis flush
+  # docker compose run --rm wpcli wp redis flush
+  # ## DB 마이그레이션
+  # docker compose run --rm wpcli wp search-replace 'http://old' 'https://new'
+  # ## 버전 확인
+  # docker compose run --rm wpcli wp --info
   wpcli:
-    image: wordpress:cli-php8.3
+    profiles: ["cli"]   # 👈 기본 up 에서 제외됨
+    image: wordpress:cli-php8.4
     user: 33:33
     command: tail -f /dev/null
     volumes:
