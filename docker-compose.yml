@@ -5,6 +5,9 @@ services:
     volumes:
       - ./_v/wp:/var/www/html
       - ./apps/${PROJECT_NAME}/theme:/var/www/html/wp-content/themes/${PROJECT_NAME}
+    depends_on:
+      db:
+        condition: service_healthy
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: root
@@ -33,13 +36,19 @@ services:
       # WPMS_MAIL_FROM: ${WPMS_MAIL_FROM}
 
   db:
-    image: mariadb
+    image: mariadb:10.11
     restart: always
     environment:
       MYSQL_DATABASE: wp
       MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     volumes:
       - ./_v/db/data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   # # wpcli 사용방법
   # ## 워드프레스 코어 업데이트
